@@ -1,0 +1,2344 @@
+\documentclass[10pt]{article}
+
+% ------------------------------------------------
+% Packages
+% ------------------------------------------------
+\usepackage[a4paper,margin=0.7in]{geometry}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+% ------------------------------------------------
+% Color Palette
+% ------------------------------------------------
+\definecolor{mainblue}{HTML}{1F4E79}
+\definecolor{lightblue}{HTML}{DCEEFF}
+
+\definecolor{mainpurple}{HTML}{8E44AD}
+\definecolor{lightpurple}{HTML}{F4ECF7}
+
+\definecolor{maingreen}{HTML}{1E8449}
+\definecolor{lightgreen}{HTML}{DDF5E5}
+
+\definecolor{mainred}{HTML}{C0392B}
+\definecolor{lightred}{HTML}{FADBD8}
+
+\definecolor{graybg}{HTML}{F5F5F5}
+
+% ------------------------------------------------
+% Hyperlinks
+% ------------------------------------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mainblue,
+    urlcolor=mainpurple
+}
+
+% ------------------------------------------------
+% Page Style
+% ------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\textcolor{mainblue}{PCS 224}}
+\fancyhead[R]{\textcolor{mainpurple}{Semiconductor Physics}}
+
+\fancyfoot[C]{\thepage}
+
+% ------------------------------------------------
+% Section Formatting
+% ------------------------------------------------
+\titleformat{\section}
+{\Large\bfseries\color{mainblue}}
+{}{0em}{}
+
+\titleformat{\subsection}
+{\large\bfseries\color{mainpurple}}
+{}{0em}{}
+
+\titleformat{\subsubsection}
+{\normalsize\bfseries\color{maingreen}}
+{}{0em}{}
+
+% ------------------------------------------------
+% Spacing
+% ------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+
+% ------------------------------------------------
+% Custom Boxes
+% ------------------------------------------------
+\newtcolorbox{mainbox}{
+    breakable,
+    colback=lightpurple,
+    colframe=mainpurple,
+    boxrule=1pt,
+    arc=4pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt
+}
+
+\newtcolorbox{greenbox}{
+    breakable,
+    colback=lightgreen,
+    colframe=maingreen,
+    boxrule=1pt,
+    arc=4pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt
+}
+
+% ------------------------------------------------
+% Math Commands
+% ------------------------------------------------
+\newcommand{\dd}{\,dx}
+
+% ------------------------------------------------
+% Document
+% ------------------------------------------------
+\begin{document}
+
+% ------------------------------------------------
+% Title Page
+% ------------------------------------------------
+\begin{center}
+
+    \vspace*{1cm}
+
+    {\Huge \bfseries \textcolor{mainblue}{PCS 224}}
+
+    \vspace{0.5cm}
+
+    {\Large \textcolor{mainpurple}{Semiconductor Physics}}
+
+    \vspace{0.8cm}
+
+    \rule{0.8\textwidth}{1pt}
+
+    \vspace{0.5cm}
+
+    {\large Powered by ChatGPT and LaTeX}
+
+    \vspace{0.8cm}
+
+    {\Large Mobina}
+
+    \vspace{0.2cm}
+
+    2024
+
+    \vspace{0.5cm}
+
+    \rule{0.8\textwidth}{1pt}
+
+\end{center}
+
+\vspace{1cm}
+
+% ------------------------------------------------
+% Table of Contents
+% ------------------------------------------------
+\tableofcontents
+
+\newpage
+
+% ------------------------------------------------
+% Formula Sheet
+% ------------------------------------------------
+\section{Formula Sheet}
+
+\begin{mainbox}
+
+\textbf{Photon Energy and Waves}
+
+\[
+f\lambda = c
+\]
+
+\[
+E = hf = \frac{hc}{\lambda}
+\]
+
+\[
+hf = K_{\max} + \phi
+\]
+
+\[
+K_{\max} = eV_{\text{stop}}
+\]
+
+\[
+E_n
+=
+-\frac{13.6}{n^2}\,\text{eV}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Current Density and Conductivity}
+
+\[
+I = \frac{\Delta Q}{\Delta t}
+\]
+
+\[
+I = nqAv_d
+\]
+
+\[
+J = \frac{I}{A}
+\]
+
+\[
+\vec{J} = \sigma \vec{E}
+\]
+
+\[
+\sigma = \frac{1}{\rho}
+=
+e(n\mu_n + p\mu_p)
+\]
+
+\vspace{0.4cm}
+
+\textbf{Carrier Concentrations}
+
+\[
+n_0 = N_C e^{-\frac{E_C-E_F}{k_BT}}
+\]
+
+\[
+p_0 = N_V e^{-\frac{E_F-E_V}{k_BT}}
+\]
+
+\[
+n_0p_0 = n_i^2
+\]
+
+\[
+n_i^2
+=
+N_CN_V e^{-\frac{E_g}{k_BT}}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Fermi-Dirac Distribution}
+
+\[
+f_F(E)
+=
+\frac{1}
+{1+e^{\frac{E-E_F}{k_BT}}}
+\]
+
+\[
+f_H(E)=1-f_F(E)
+\]
+
+\vspace{0.4cm}
+
+\textbf{Built-In Potential}
+
+\[
+V_{bi}
+=
+\frac{k_BT}{e}
+\ln
+\left(
+\frac{N_A N_D}{n_i^2}
+\right)
+\]
+
+\vspace{0.4cm}
+
+\textbf{Important Constants}
+
+\[
+e = 1.6\times10^{-19}\,\text{C}
+\]
+
+\[
+h = 6.64\times10^{-34}\,\text{J}\cdot\text{s}
+\]
+
+\[
+c = 3.0\times10^8\,\text{m/s}
+\]
+
+\[
+hc = 1240\,\text{eV}\cdot\text{nm}
+\]
+
+\[
+k_B = 8.617\times10^{-5}\,\text{eV/K}
+\]
+
+\end{mainbox}
+\begin{greenbox}
+
+\subsubsection*{Physical Meaning of \(f_c\) and \(\lambda_c\)}
+
+The quantities
+
+\[
+f_c
+\]
+
+and
+
+\[
+\lambda_c
+\]
+
+represent the threshold values required for a photon to excite an electron across the semiconductor band gap.
+
+They correspond to the minimum photon energy necessary for absorption.
+
+\vspace{0.4cm}
+
+The band-gap energy is related to the photon energy by
+
+\[
+E_g
+=
+hf_c
+=
+\frac{hc}{\lambda_c}
+\]
+
+where
+
+\begin{itemize}
+
+\item
+\[
+E_g
+\]
+is the band-gap energy
+
+\item
+\[
+f_c
+\]
+is the critical (minimum) frequency
+
+\item
+\[
+\lambda_c
+\]
+is the critical (maximum) wavelength
+
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Physical Meaning of \(f_c\)}
+
+\[
+f_c
+\]
+
+is the smallest photon frequency capable of exciting an electron from the valence band into the conduction band.
+
+Since photon energy is
+
+\[
+E=hf
+\]
+
+higher frequency corresponds to higher energy.
+
+Therefore,
+
+\[
+f<f_c
+\]
+
+implies
+
+\[
+hf<E_g
+\]
+
+meaning the photon does not possess sufficient energy to overcome the band gap.
+
+\vspace{0.5cm}
+
+\textbf{Physical Meaning of \(\lambda_c\)}
+
+\[
+\lambda_c
+\]
+
+is the largest wavelength capable of exciting electrons across the band gap.
+
+Since
+
+\[
+E=\frac{hc}{\lambda}
+\]
+
+larger wavelength corresponds to lower energy.
+
+Therefore,
+
+\[
+\lambda>\lambda_c
+\]
+
+implies that the photon energy is too small to generate electron-hole pairs.
+
+\vspace{0.5cm}
+
+For the GaAs problem,
+
+\[
+f_c
+\approx
+3.42\times10^{14}\,\text{Hz}
+\]
+
+means photons with frequencies below this value cannot excite electrons across the band gap.
+
+Similarly,
+
+\[
+\lambda_c
+\approx
+877\,\text{nm}
+\]
+
+means wavelengths longer than \(877\,\text{nm}\) will not be strongly absorbed by the semiconductor.
+
+\end{greenbox}
+
+% ------------------------------------------------
+% Tutorials
+% ------------------------------------------------
+\section{Tutorials}
+\subsection{Tutorial 1 - PART 1}
+
+% --------------------------------------------------
+% Question 1
+% --------------------------------------------------
+
+\subsection*{Question 1}
+
+\begin{mainbox}
+
+If a charge is negative, the direction of the electric force on it is
+
+\begin{enumerate}[label=(\alph*)]
+\item In the same direction as the applied electric field
+\item In the opposite direction as the applied electric field
+\end{enumerate}
+
+Explain your reasoning.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Question 2
+% --------------------------------------------------
+
+\subsection*{Question 2}
+
+\begin{mainbox}
+
+Consider a negatively charged particle which moves in an area of space where an electric field exists. No other forces act on the particle.
+
+Which of the following is a correct statement? Explain your reasoning.
+
+The particle
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Gains potential energy and kinetic energy when it moves in the direction of the electric field
+
+\item Loses electric potential energy when the particle moves in the direction of the electric field
+
+\item Gains kinetic energy when it moves in the direction of the field
+
+\item Gains electric potential energy when it moves in the direction of the field
+
+\item Gains potential difference and electric potential energy when it moves in the direction of the field
+
+\end{enumerate}
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Question 3
+% --------------------------------------------------
+
+\subsection*{Question 3}
+
+\begin{mainbox}
+
+Four electrons move from point \(A\) to point \(B\) in a uniform electric field as shown below.
+
+Rank the electrons in diagrams I through IV by their changes in potential energy from greatest to least when travelling from \(A\) to \(B\).
+
+Explain your reasoning.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{2.png}
+\end{center}
+
+\end{mainbox}
+
+% ==================================================
+% Tutorial 1 Solutions
+% ==================================================
+
+\subsection{Tutorial 1 Solutions - PART 1}
+
+% --------------------------------------------------
+% Solution 1
+% --------------------------------------------------
+
+\subsection*{Solution 1}
+
+\begin{mainbox}
+
+\textbf{Answer:} (b) In the opposite direction as the applied electric field.
+
+\vspace{0.3cm}
+
+The electric force on a charge is given by
+
+\[
+\vec{F} = q\vec{E}
+\]
+
+For a negative charge (\(q < 0\)), the force vector points opposite to the electric field direction.
+
+Therefore, a negative charge experiences a force opposite to the applied electric field.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Solution 2
+% --------------------------------------------------
+
+\subsection*{Solution 2}
+
+\begin{mainbox}
+
+\textbf{Answer:} (b) Loses electric potential energy when the particle moves in the direction of the electric field.
+
+\vspace{0.3cm}
+
+For a negative charge,
+
+\[
+\vec{F} = q\vec{E}
+\]
+
+Since \(q < 0\), the electric force acts opposite to the electric field.
+
+When the particle moves in the direction of the electric field, the electric force acts opposite to the displacement. Therefore, the electric field does negative work on the particle.
+
+Using
+
+\[
+\Delta U = -W_{\text{field}}
+\]
+
+a negative value of work implies that the electric potential energy decreases.
+
+Thus, the correct statement is (b).
+
+\end{mainbox}
+
+\subsection*{Solution 3}
+
+\begin{mainbox}
+
+The ranking of the changes in electric potential energy is
+
+\[
+\boxed{II > I = IV > III}
+\]
+
+\vspace{0.4cm}
+
+The electric field points to the right, so the electric potential decreases in the direction of the field.
+
+For an electron,
+
+\[
+\Delta U = q\Delta V
+\]
+
+where \(q=-e\).
+
+\vspace{0.3cm}
+
+\textbf{Diagram I and IV:}
+
+Points \(A\) and \(B\) are vertically aligned, so they are at the same electric potential.
+
+Therefore,
+
+\[
+\Delta V = 0
+\quad \Rightarrow \quad
+\Delta U = 0
+\]
+
+\vspace{0.3cm}
+
+\textbf{Diagram II:}
+
+Point \(B\) is to the right of \(A\), so the electron moves in the direction of the electric field.
+
+The electric potential decreases:
+
+\[
+\Delta V < 0
+\]
+
+Since the electron has negative charge,
+
+\[
+\Delta U = q\Delta V > 0
+\]
+
+Thus, Diagram II has the greatest increase in potential energy.
+
+\vspace{0.3cm}
+
+\textbf{Diagram III:}
+
+In this case, point \(B\) is to the left of \(A\), so the electron moves opposite to the electric field.
+
+Therefore,
+
+\[
+\Delta V > 0
+\]
+
+and since \(q=-e\),
+
+\[
+\Delta U < 0
+\]
+
+Diagram III has a larger horizontal displacement than Diagram IV, so it has the most negative change in potential energy.
+
+\vspace{0.3cm}
+
+Hence,
+
+\[
+\boxed{II > I = IV > III}
+\]
+
+\end{mainbox}
+
+
+% ==================================================
+% Tutorial 2 Questions
+% ==================================================
+
+\subsection{Tutorial 2 - PART 1}
+
+% --------------------------------------------------
+% Question 8
+% --------------------------------------------------
+\subsection*{Question 8}
+
+\begin{mainbox}
+
+Explain the following concepts:
+
+\begin{itemize}
+
+\item Current carrier
+
+\item Hole
+
+\item \(p\)-type / \(n\)-type semiconductor
+
+\item Intrinsic semiconductor
+
+\end{itemize}
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Question 9
+% --------------------------------------------------
+
+\subsection*{Question 9}
+
+\begin{mainbox}
+
+Suppose you know a material is \(p\)-type, and that the thermal equilibrium electron concentration is
+
+\[
+n_0 = 2.0 \times 10^{10}\ \text{cm}^{-3}
+\]
+
+What can you say about the value of the intrinsic carrier concentration of this material?
+
+Make the most precise statement you can.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Question 10
+% --------------------------------------------------
+
+\subsection*{Question 10}
+
+\begin{mainbox}
+
+Consider the setup shown where the (conventional) current is flowing to the right through a semiconductor, and a magnetic field is pointing out of the page.
+
+A voltmeter hooked up as shown reads a Hall voltage of \(+10\,\text{mV}\).
+
+Is this an \(n\)-type or \(p\)-type material?
+
+Explain carefully.
+
+\end{mainbox}
+
+% ==================================================
+% Tutorial 2 Solutions
+% ==================================================
+
+\subsection{Tutorial 2 Solutions - PART 1}
+
+% --------------------------------------------------
+% Solution 8
+% --------------------------------------------------
+
+\subsection*{Solution 8}
+
+\begin{mainbox}
+
+\textbf{Current carrier:}
+
+A current carrier is a charged particle that contributes to electrical conduction in a material. In semiconductors, the current carriers are electrons and holes.
+
+\vspace{0.4cm}
+
+\textbf{Hole:}
+
+A hole is the absence of an electron in the valence band. It behaves as an effective positive charge carrier.
+
+\vspace{0.4cm}
+
+\textbf{\(p\)-type / \(n\)-type semiconductor:}
+
+A \(p\)-type semiconductor is formed by doping a semiconductor with acceptor atoms, producing holes as the majority carriers.
+
+An \(n\)-type semiconductor is formed by doping with donor atoms, producing electrons as the majority carriers.
+
+\vspace{0.4cm}
+
+\textbf{Intrinsic semiconductor:}
+
+An intrinsic semiconductor is a pure semiconductor with no intentional doping. Electrons and holes are present in equal concentrations.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Solution 9
+% --------------------------------------------------
+
+\subsection*{Solution 9}
+
+\begin{mainbox}
+
+For a semiconductor in thermal equilibrium,
+
+\[
+n_0 p_0 = n_i^2
+\]
+
+Since the material is \(p\)-type,
+
+\[
+p_0 > n_0
+\]
+
+Therefore,
+
+\[
+n_i^2 = n_0 p_0 > n_0^2
+\]
+
+Taking the square root gives
+
+\[
+n_i > n_0
+\]
+
+Hence,
+
+\[
+\boxed{
+n_i > 2.0 \times 10^{10}\ \text{cm}^{-3}
+}
+\]
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Solution 10
+% --------------------------------------------------
+
+\subsection*{Solution 10}
+
+\begin{mainbox}
+
+The material is \(\boxed{p\text{-type}}\).
+
+\vspace{0.4cm}
+
+The Hall effect arises because moving charge carriers experience a magnetic force:
+
+\[
+\vec{F} = q\vec{v} \times \vec{B}
+\]
+
+The conventional current flows to the right, and the magnetic field points out of the page.
+
+For positive charge carriers (holes), the magnetic force direction produces the observed positive Hall voltage.
+
+Since the measured Hall voltage is positive, the dominant charge carriers are positive.
+
+Therefore, the semiconductor is \(p\)-type.
+
+\end{mainbox}
+
+\subsection{Tutorial 3 - PART 1}
+
+\begin{mainbox}
+
+\textbf{Topics:}
+Band Structure,
+Fermi Energy,
+Fermi Function,
+Statistical Mechanics of Carrier Concentrations
+
+\vspace{0.5cm}
+
+\subsubsection*{Conceptual Questions}
+
+\begin{enumerate}
+\setcounter{enumi}{16}
+
+\item
+True or False:
+At any temperature,
+the Fermi energy is the energy level above which all electron states are empty.
+
+\vspace{0.4cm}
+
+\item
+(Based on Serway/Jewett -- Objective Question 43.5)
+
+The conductivity of metals decreases with increasing temperature due to the increased frequency of electron collisions with atoms.
+
+In contrast,
+the conductivity of intrinsic semiconductors increases as \(T\) increases.
+
+What property of a semiconductor is responsible for this behavior?
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+Collisions decrease as the temperature increases
+
+\item
+The number of free electrons and holes increases steeply with \(T\)
+
+\item
+The energy gap decreases with increasing temperature
+
+\item
+Electrons do not collide with atoms in a semiconductor
+
+\end{enumerate}
+
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\subsubsection*{Quantitative Questions}
+
+\begin{enumerate}
+\setcounter{enumi}{18}
+
+\item
+(Based on Neaman, Problem 3.18)
+
+The energy gap of GaAs is \(1.42\,\text{eV}\).
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+Determine the minimum frequency \(f_c\)
+that an incident photon must have such that it can possibly elevate an electron to the conduction band.
+
+\item
+What is the corresponding wavelength \(\lambda_c\)
+of the photon you found in the previous part?
+
+\item
+Suppose the material is at \(T=0\,\text{K}\)
+and you shine light with \(\lambda > \lambda_c\) on it.
+
+Describe what will happen in words.
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{mainbox}
+% ------------------------------------------------
+% Tutorial 3 Solutions
+% ------------------------------------------------
+
+\subsection{Tutorial 3 Solutions - PART 1}
+
+% ------------------------------------------------
+% Conceptual Solutions
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Conceptual Question 17}
+
+\textbf{Question}
+
+True or False:
+At any temperature, the Fermi energy is the energy level above which all electron states are empty.
+
+\vspace{0.4cm}
+
+\textbf{Solution}
+
+\[
+\boxed{\text{False}}
+\]
+
+At absolute zero (\(T=0\,\text{K}\)),
+all states above the Fermi energy are empty.
+
+However, at temperatures above absolute zero,
+some electrons gain thermal energy and occupy states above the Fermi energy.
+
+Therefore, the Fermi energy is not an absolute boundary between filled and empty states at all temperatures.
+
+\end{greenbox}
+
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Conceptual Question 18}
+
+\textbf{Question}
+
+Why does the conductivity of intrinsic semiconductors increase with temperature?
+
+\vspace{0.4cm}
+
+\textbf{Solution}
+
+\[
+\boxed{
+\text{(b) The number of free electrons and holes increases steeply with }T
+}
+\]
+
+As temperature increases,
+more electrons gain enough thermal energy to jump across the band gap from the valence band to the conduction band.
+
+This creates:
+
+\[
+\text{more free electrons}
+\]
+
+and
+
+\[
+\text{more holes}
+\]
+
+which significantly increases conductivity.
+
+Although collisions also increase with temperature,
+the dramatic increase in carrier concentration dominates in intrinsic semiconductors.
+
+\end{greenbox}
+
+% ------------------------------------------------
+% Quantitative Solutions
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Quantitative Question 19(a)}
+
+\textbf{Given}
+
+\[
+E_g = 1.42\,\text{eV}
+\]
+
+Find the minimum photon frequency \(f_c\).
+
+\vspace{0.4cm}
+
+\textbf{Formula}
+
+\[
+E = hf
+\]
+
+Therefore,
+
+\[
+f_c = \frac{E_g}{h}
+\]
+
+\vspace{0.4cm}
+
+Convert electron volts to joules:
+
+\[
+E_g
+=
+1.42(1.6\times10^{-19})
+\]
+
+\[
+E_g
+=
+2.272\times10^{-19}\,\text{J}
+\]
+
+Using
+
+\[
+h=6.64\times10^{-34}\,\text{J}\cdot\text{s}
+\]
+
+we obtain
+
+\[
+f_c
+=
+\frac{2.272\times10^{-19}}
+{6.64\times10^{-34}}
+\]
+
+\[
+f_c
+=
+3.42\times10^{14}\,\text{Hz}
+\]
+
+\vspace{0.4cm}
+
+\[
+\boxed{
+f_c
+=
+3.42\times10^{14}\,\text{Hz}
+}
+\]
+
+\end{greenbox}
+
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Quantitative Question 19(b)}
+
+\textbf{Find the corresponding wavelength \(\lambda_c\).}
+
+\vspace{0.4cm}
+
+\textbf{Formula}
+
+\[
+\lambda = \frac{c}{f}
+\]
+
+Using
+
+\[
+c=3.0\times10^8\,\text{m/s}
+\]
+
+and
+
+\[
+f_c=3.42\times10^{14}\,\text{Hz}
+\]
+
+we obtain
+
+\[
+\lambda_c
+=
+\frac{3.0\times10^8}
+{3.42\times10^{14}}
+\]
+
+\[
+\lambda_c
+=
+8.77\times10^{-7}\,\text{m}
+\]
+
+Converting to nanometers:
+
+\[
+\lambda_c
+=
+877\,\text{nm}
+\]
+
+\vspace{0.4cm}
+
+\[
+\boxed{
+\lambda_c
+=
+877\,\text{nm}
+}
+\]
+
+\end{greenbox}
+
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Quantitative Question 19(c)}
+
+\textbf{Question}
+
+Suppose the material is at \(T=0\,\text{K}\)
+and light with
+
+\[
+\lambda > \lambda_c
+\]
+
+is shined on the material.
+
+Describe what happens.
+
+\vspace{0.4cm}
+
+\textbf{Solution}
+
+If
+
+\[
+\lambda > \lambda_c
+\]
+
+then the photon energy is smaller than the band-gap energy because
+
+\[
+E=\frac{hc}{\lambda}
+\]
+
+and increasing wavelength decreases energy.
+
+Therefore, the photons do not have enough energy to excite electrons from the valence band to the conduction band.
+
+As a result:
+
+\begin{itemize}
+
+\item No electron-hole pairs are generated
+
+\item No significant absorption occurs
+
+\item The material remains non-conductive
+
+\end{itemize}
+
+\vspace{0.4cm}
+
+\[
+\boxed{
+\text{Photons with }\lambda>\lambda_c
+\text{ cannot excite electrons across the band gap.}
+}
+\]
+
+\end{greenbox}
+% ------------------------------------------------
+% Tutorial 3 Additional Questions
+% ------------------------------------------------
+
+\subsection{Tutorial 3 - PART 2}
+
+% ------------------------------------------------
+
+\begin{mainbox}
+
+\subsubsection*{Question 20}
+
+(Neaman 4.11)
+
+An \(n\)-type silicon sample has a resistivity of
+
+\[
+5(\Omega\cdot\text{cm})
+\]
+
+at
+
+\[
+T = 300\,\text{K}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+What is the donor impurity concentration?
+
+\item
+What is the expected resistivity at
+
+\[
+(i)\; T=200\,\text{K}
+\]
+
+\[
+(ii)\; T=400\,\text{K}
+\]
+
+Assume the doping is large so that
+
+\[
+n_0 \gg n_i
+\]
+
+You will need the mobility as a function of temperature.
+
+Use
+
+\begin{itemize}
+
+\item
+\[
+\mu_n
+=
+2500\,
+\frac{\text{cm}^2}
+{\text{V}\cdot\text{sec}}
+\quad
+\text{at }
+T=200\,\text{K}
+\]
+
+\item
+\[
+\mu_n
+=
+1350\,
+\frac{\text{cm}^2}
+{\text{V}\cdot\text{sec}}
+\quad
+\text{at }
+T=300\,\text{K}
+\]
+
+\item
+\[
+\mu_n
+=
+700\,
+\frac{\text{cm}^2}
+{\text{V}\cdot\text{sec}}
+\quad
+\text{at }
+T=400\,\text{K}
+\]
+
+\end{itemize}
+
+\end{enumerate}
+
+\end{mainbox}
+
+% ------------------------------------------------
+
+\begin{mainbox}
+
+\subsubsection*{Question 21}
+
+(Based on Neaman 3.42)
+
+Consider the energy levels shown in the figure.
+
+Let
+
+\[
+T=300\,\text{K}
+\]
+
+\vspace{0.5cm}
+
+\begin{center}
+\includegraphics[width=0.35\textwidth]{1.png}
+\end{center}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+If
+
+\[
+E_1-E_F=0.30\,\text{eV}
+\]
+
+determine:
+
+\begin{itemize}
+
+\item
+the probability that an energy state at
+
+\[
+E=E_1
+\]
+
+is occupied by an electron
+
+\item
+the probability that an energy state at
+
+\[
+E=E_2
+\]
+
+is empty
+
+\end{itemize}
+
+\item
+Answer the same questions as the previous part,
+assuming
+
+\[
+E_F-E_2=0.40\,\text{eV}
+\]
+
+\end{enumerate}
+
+
+
+\subsubsection*{Question 22}
+
+Determine the probability that an allowed energy state is unoccupied by an electron if the state is below the Fermi energy level by
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+2k_BT
+\]
+
+\item
+\[
+4k_BT
+\]
+
+\end{enumerate}
+
+\end{mainbox}
+
+% ------------------------------------------------
+
+\begin{mainbox}
+
+\subsubsection*{Question 23}
+
+(Based on Neaman, Problem 4.55)
+
+Silicon at
+
+\[
+T=300\,\text{K}
+\]
+
+is doped with acceptor atoms at a concentration of
+
+\[
+N_a = 7.0\times10^{15}\,\text{cm}^{-3}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+Determine
+
+\[
+E_F-E_V
+\]
+
+\item
+Calculate the concentration of additional acceptor atoms that must be added to move the Fermi level a distance
+
+\[
+k_BT
+\]
+
+closer to the valence band edge.
+
+\end{enumerate}
+
+\end{mainbox}
+% ------------------------------------------------
+% Solutions to Questions 20--23
+% ------------------------------------------------
+
+\subsection{Tutorial 3 Solutions - PART 2}
+
+% ------------------------------------------------
+% Question 20
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Solution 20}
+
+\textbf{Given}
+
+\[
+\rho = 5\,\Omega\cdot\text{cm}
+\]
+
+\[
+\mu_n = 1350\,
+\frac{\text{cm}^2}{\text{V}\cdot\text{s}}
+\]
+
+\vspace{0.3cm}
+
+\textbf{(a) Donor Impurity Concentration}
+
+For an \(n\)-type semiconductor,
+
+\[
+\sigma = en\mu_n
+\]
+
+and
+
+\[
+\rho = \frac{1}{\sigma}
+\]
+
+Therefore,
+
+\[
+n
+=
+\frac{1}{e\rho\mu_n}
+\]
+
+Substitute the values:
+
+\[
+n
+=
+\frac{1}
+{
+(1.6\times10^{-19})
+(5)
+(1350)
+}
+\]
+
+\[
+n
+=
+9.26\times10^{14}\,\text{cm}^{-3}
+\]
+
+Thus,
+
+\[
+\boxed{
+N_D
+\approx
+9.3\times10^{14}\,\text{cm}^{-3}
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{(b) Resistivity at Different Temperatures}
+
+Since
+
+\[
+\rho = \frac{1}{en\mu_n}
+\]
+
+and the carrier concentration remains approximately constant,
+
+we only change the mobility.
+
+\vspace{0.4cm}
+
+\textbf{At \(T=200\,\text{K}\)}
+
+\[
+\mu_n
+=
+2500\,
+\frac{\text{cm}^2}{\text{V}\cdot\text{s}}
+\]
+
+\[
+\rho_{200}
+=
+\frac{1}
+{
+(1.6\times10^{-19})
+(9.26\times10^{14})
+(2500)
+}
+\]
+
+\[
+\boxed{
+\rho_{200}
+\approx
+2.7\,\Omega\cdot\text{cm}
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{At \(T=400\,\text{K}\)}
+
+\[
+\mu_n
+=
+700\,
+\frac{\text{cm}^2}{\text{V}\cdot\text{s}}
+\]
+
+\[
+\rho_{400}
+=
+\frac{1}
+{
+(1.6\times10^{-19})
+(9.26\times10^{14})
+(700)
+}
+\]
+
+\[
+\boxed{
+\rho_{400}
+\approx
+9.6\,\Omega\cdot\text{cm}
+}
+\]
+
+\end{greenbox}
+
+% ------------------------------------------------
+% Question 21
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Solution 21}
+
+Use the Fermi-Dirac distribution:
+
+\[
+f(E)
+=
+\frac{1}
+{
+1+e^{(E-E_F)/k_BT}
+}
+\]
+
+At
+
+\[
+T=300\,\text{K}
+\]
+
+\[
+k_BT
+=
+0.026\,\text{eV}
+\]
+
+\vspace{0.5cm}
+
+\textbf{(a) Probability that \(E=E_1\) is occupied}
+
+Given
+
+\[
+E_1-E_F
+=
+0.30\,\text{eV}
+\]
+
+Then
+
+\[
+f(E_1)
+=
+\frac{1}
+{
+1+e^{0.30/0.026}
+}
+\]
+
+\[
+f(E_1)
+=
+9.75\times10^{-6}
+\]
+
+Thus,
+
+\[
+\boxed{
+P(E_1\text{ occupied})
+=
+9.75\times10^{-6}
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Probability that \(E=E_2\) is empty}
+
+The hole probability is
+
+\[
+1-f(E)
+\]
+
+Since \(E_2\) is equally far below \(E_F\),
+
+\[
+P(E_2\text{ empty})
+=
+9.75\times10^{-6}
+\]
+
+\[
+\boxed{
+P(E_2\text{ empty})
+=
+9.75\times10^{-6}
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{(b) If}
+
+\[
+E_F-E_2
+=
+0.40\,\text{eV}
+\]
+
+then
+
+\[
+P(E_2\text{ empty})
+=
+\frac{1}
+{
+1+e^{0.40/0.026}
+}
+\]
+
+\[
+P(E_2\text{ empty})
+=
+2.08\times10^{-7}
+\]
+
+\[
+\boxed{
+P(E_2\text{ empty})
+=
+2.08\times10^{-7}
+}
+\]
+
+\end{greenbox}
+
+% ------------------------------------------------
+% Question 22
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Solution 22}
+
+The probability that a state is unoccupied is
+
+\[
+f_H(E)
+=
+1-f_F(E)
+=
+\frac{1}
+{
+1+e^{(E_F-E)/k_BT}
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{(a) State below \(E_F\) by \(2k_BT\)}
+
+\[
+E_F-E
+=
+2k_BT
+\]
+
+Then
+
+\[
+f_H(E)
+=
+\frac{1}
+{
+1+e^2
+}
+\]
+
+\[
+f_H(E)
+=
+0.119
+\]
+
+Therefore,
+
+\[
+\boxed{
+P(\text{unoccupied})
+=
+11.9\%
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{(b) State below \(E_F\) by \(4k_BT\)}
+
+\[
+E_F-E
+=
+4k_BT
+\]
+
+Then
+
+\[
+f_H(E)
+=
+\frac{1}
+{
+1+e^4
+}
+\]
+
+\[
+f_H(E)
+=
+0.018
+\]
+
+Therefore,
+
+\[
+\boxed{
+P(\text{unoccupied})
+=
+1.8\%
+}
+\]
+
+\end{greenbox}
+
+% ------------------------------------------------
+% Question 23
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Solution 23}
+
+\textbf{Given}
+
+\[
+N_A
+=
+7.0\times10^{15}\,\text{cm}^{-3}
+\]
+
+\[
+T=300\,\text{K}
+\]
+
+For silicon,
+
+\[
+N_V
+=
+1.04\times10^{19}\,\text{cm}^{-3}
+\]
+
+\vspace{0.4cm}
+
+\textbf{(a) Determine \(E_F-E_V\)}
+
+Use
+
+\[
+E_F-E_V
+=
+k_BT
+\ln
+\left(
+\frac{N_V}{p_0}
+\right)
+\]
+
+Since the semiconductor is \(p\)-type,
+
+\[
+p_0
+\approx
+N_A
+\]
+
+Thus,
+
+\[
+E_F-E_V
+=
+(0.026)
+\ln
+\left(
+\frac{1.04\times10^{19}}
+{7.0\times10^{15}}
+\right)
+\]
+
+\[
+E_F-E_V
+=
+0.19\,\text{eV}
+\]
+
+Therefore,
+
+\[
+\boxed{
+E_F-E_V
+=
+0.19\,\text{eV}
+}
+\]
+
+\vspace{0.5cm}
+
+\textbf{(b) Additional Acceptor Concentration}
+
+To move the Fermi level closer to the valence band by
+
+\[
+k_BT
+\]
+
+the acceptor concentration must increase by a factor of
+
+\[
+e
+\]
+
+Therefore,
+
+\[
+N_A'
+=
+eN_A
+\]
+
+\[
+N_A'
+=
+(2.718)
+(7.0\times10^{15})
+\]
+
+\[
+N_A'
+=
+1.90\times10^{16}\,\text{cm}^{-3}
+\]
+
+Additional acceptor atoms needed:
+
+\[
+\Delta N_A
+=
+N_A'-N_A
+\]
+
+\[
+\Delta N_A
+=
+1.90\times10^{16}
+-
+7.0\times10^{15}
+\]
+
+\[
+\Delta N_A
+=
+1.2\times10^{16}\,\text{cm}^{-3}
+\]
+
+Thus,
+
+\[
+\boxed{
+\Delta N_A
+=
+1.2\times10^{16}\,\text{cm}^{-3}
+}
+\]
+
+\end{greenbox}
+% ------------------------------------------------
+% Questions 24 and 25
+% ------------------------------------------------
+\subsection{Tutorial 3 - PART 3}
+\begin{mainbox}
+
+\subsubsection*{Question 24}
+
+An \(n\)-type silicon sample has a resistivity of
+
+\[
+5(\Omega\cdot\text{cm})
+\]
+
+at
+
+\[
+T=300\,\text{K}
+\]
+
+What is the Fermi energy position relative to the conduction band?
+
+\vspace{0.4cm}
+
+Given:
+
+\[
+\mu_n
+=
+1350\,
+\frac{\text{cm}^2}
+{\text{V}\cdot\text{sec}}
+\]
+
+at
+
+\[
+T=300\,\text{K}
+\]
+
+\end{mainbox}
+
+% ------------------------------------------------
+
+\begin{mainbox}
+
+\subsubsection*{Question 25}
+
+The Fermi energy of an \(n\)-type silicon sample is between
+
+\[
+E_C
+\]
+
+and the middle of the energy gap.
+
+When
+
+\[
+E_F
+\]
+
+moves toward
+
+\[
+E_C
+\]
+
+will the resistivity of the sample increase or decrease?
+
+Explain your reasoning.
+
+\end{mainbox}
+% ------------------------------------------------
+% Solutions to Questions 24 and 25
+% ------------------------------------------------
+
+
+
+\subsection{Tutorial 3 Solutions - PART 3}
+
+\begin{greenbox}
+
+\subsubsection*{Solution 24}
+
+\textbf{Given}
+
+\[
+\rho
+=
+5\,\Omega\cdot\text{cm}
+\]
+
+\[
+\mu_n
+=
+1350\,
+\frac{\text{cm}^2}
+{\text{V}\cdot\text{s}}
+\]
+
+\vspace{0.4cm}
+
+For an \(n\)-type semiconductor:
+
+\[
+\sigma
+=
+en\mu_n
+\]
+
+and
+
+\[
+\rho
+=
+\frac{1}{\sigma}
+\]
+
+Thus,
+
+\[
+n
+=
+\frac{1}{e\rho\mu_n}
+\]
+
+Substitute values:
+
+\[
+n
+=
+\frac{1}
+{
+(1.6\times10^{-19})
+(5)
+(1350)
+}
+\]
+
+\[
+n
+=
+9.26\times10^{14}\,\text{cm}^{-3}
+\]
+
+\vspace{0.5cm}
+
+Use
+
+\[
+E_C-E_F
+=
+k_BT
+\ln
+\left(
+\frac{N_C}{n_0}
+\right)
+\]
+
+For silicon at \(300\,\text{K}\):
+
+\[
+N_C
+=
+2.8\times10^{19}\,\text{cm}^{-3}
+\]
+
+and
+
+\[
+k_BT
+=
+0.026\,\text{eV}
+\]
+
+Therefore,
+
+\[
+E_C-E_F
+=
+0.026
+\ln
+\left(
+\frac{2.8\times10^{19}}
+{9.26\times10^{14}}
+\right)
+\]
+
+\[
+E_C-E_F
+=
+0.267\,\text{eV}
+\]
+
+Thus,
+
+\[
+\boxed{
+E_F
+\text{ is }
+0.267\,\text{eV}
+\text{ below }
+E_C
+}
+\]
+
+\end{greenbox}
+
+% ------------------------------------------------
+% Solution 25
+% ------------------------------------------------
+
+\begin{greenbox}
+
+\subsubsection*{Solution 25}
+
+When the Fermi level moves closer to the conduction band:
+
+\[
+E_F \rightarrow E_C
+\]
+
+the electron concentration increases.
+
+From semiconductor statistics:
+
+\[
+n_0
+=
+N_C
+e^{-(E_C-E_F)/k_BT}
+\]
+
+As
+
+\[
+E_C-E_F
+\]
+
+becomes smaller,
+the exponential term becomes larger,
+so the number of free electrons increases.
+
+\vspace{0.5cm}
+
+Conductivity is
+
+\[
+\sigma
+=
+en\mu_n
+\]
+
+Thus,
+increasing electron concentration increases conductivity.
+
+Since
+
+\[
+\rho
+=
+\frac{1}{\sigma}
+\]
+
+the resistivity decreases.
+
+\vspace{0.5cm}
+
+\[
+\boxed{
+\text{The resistivity decreases as }E_F
+\text{ moves closer to }E_C
+}
+\]
+
+\end{greenbox}
+
+% ==================================================
+% Conceptual Questions
+% ==================================================
+
+\section{Practice Problems}
+\subsection{Set #6}
+\subsection*{Question 1}
+
+\begin{mainbox}
+
+\textbf{True or False:}
+
+The formulas
+
+\[
+n_0 = N_c e^{-(E_c-E_F)/k_BT}
+\]
+
+and
+
+\[
+p_0 = N_v e^{-(E_F-E_v)/k_BT}
+\]
+
+do not include the effects of doping.
+
+Explain your answer.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Solution 1
+% --------------------------------------------------
+
+\subsection*{Solution 1}
+
+\begin{mainbox}
+
+\textbf{Answer: False}
+
+\vspace{0.3cm}
+
+The effects of doping are included indirectly through the Fermi energy level \(E_F\).
+
+\vspace{0.3cm}
+
+When donor or acceptor atoms are added to a semiconductor, the Fermi level shifts:
+
+\begin{itemize}
+
+\item In \(n\)-type material, \(E_F\) moves closer to the conduction band.
+
+\item In \(p\)-type material, \(E_F\) moves closer to the valence band.
+
+\end{itemize}
+
+Since the carrier concentration formulas depend on \(E_F\), doping changes both \(n_0\) and \(p_0\).
+
+Therefore, the statement is false.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Question 2
+% --------------------------------------------------
+
+\subsection*{Question 2}
+
+\begin{mainbox}
+
+When donor atoms are introduced into a semiconductor sample, why does the equilibrium hole concentration decrease?
+
+Explain in words.
+
+\end{mainbox}
+
+% --------------------------------------------------
+% Solution 2
+% --------------------------------------------------
+
+\subsection*{Solution 2}
+
+\begin{mainbox}
+
+When donor atoms are added, extra electrons are introduced into the semiconductor.
+
+These electrons recombine with holes, causing previously unoccupied states in the valence band to become occupied.
+
+As a result, the equilibrium hole concentration decreases.
+
+\vspace{0.3cm}
+
+This is also consistent with the mass-action law:
+
+\[
+n_0 p_0 = n_i^2
+\]
+
+As the electron concentration \(n_0\) increases, the hole concentration \(p_0\) must decrease so that the product remains constant.
+
+\end{mainbox}
+
+
+
+\end{document}
